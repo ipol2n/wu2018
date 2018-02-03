@@ -11,6 +11,8 @@ jobs:
       - run: ./composer install
       - run: ./vendor/bin/phpunit
   deploy-job:
+    machine:
+      enabled: true
     working_directory: ~/wu2018
     steps:
       - run: ssh ubuntu@13.250.22.139 ls
