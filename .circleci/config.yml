@@ -10,6 +10,10 @@ jobs:
       - run: curl -sS https://getcomposer.org/installer | php -- --filename=composer
       - run: ./composer install
       - run: ./vendor/bin/phpunit
+  deploy-job:
+    working_directory: ~/wu2018
+    steps:
+      - run: ssh ubuntu@13.250.22.139 ls
 
 
 # # PHP CircleCI 2.0 configuration file
