@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  build:
+  build-job:
     docker:
       - image: circleci/php:7.1.5-browsers
     working_directory: ~/wu2018
@@ -14,6 +14,14 @@ jobs:
     working_directory: ~/wu2018
     steps:
       - run: ssh ubuntu@13.250.22.139 ls
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build-job
+      - deploy-job:
+          requires:
+            - build-job
 
 
 # # PHP CircleCI 2.0 configuration file
